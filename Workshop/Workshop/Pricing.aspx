@@ -5,7 +5,7 @@
         service
     </h1>
     <hr />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-dark" DataSourceID="SqlDataSource1">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-dark" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
             <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
