@@ -47,15 +47,15 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a runat="server" class="nav-link" href="~/">Home</a>
 
                     </li>
                     <li class="nav-item">
-                        <a runat="server" class="nav-link" href="~/About">Order</a>
+                        <a runat="server" class="nav-link" href="~/Pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a runat="server" class="nav-link" href="~/Contact">Pricing</a>
+                        <a runat="server" class="nav-link" href="~/Order">Order</a>
                     </li>
                 </ul>
 

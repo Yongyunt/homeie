@@ -52,10 +52,10 @@
 
                     </li>
                     <li class="nav-item">
-                        <a runat="server" class="nav-link" href="~/About">Order</a>
+                        <a runat="server" class="nav-link" href="~/Pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a runat="server" class="nav-link" href="~/Contact">Pricing</a>
+                        <a runat="server" class="nav-link" href="~/Order">Order</a>
                     </li>
                 </ul>
 
@@ -83,6 +83,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
+              
             </footer>
         </div>
     </form>

@@ -28,7 +28,7 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" CssClass="btn btn-success" PostBackUrl='<%# Eval("P_Name","Order.aspx?P_Name={0}") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
             
