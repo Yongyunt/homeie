@@ -31,6 +31,15 @@
         <label for="exampleInputEmail1">Phone number</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone number">
      </div>
+        <div>
+              <asp:DropDownList ID="DropDownList1" runat="server">
+                       <asp:ListItem>ลูกค้า</asp:ListItem>
+                        <asp:ListItem>แม่ค้า</asp:ListItem>
+                     
+         </asp:DropDownList>
+        </div>
+        <br />
+
      <button type="Submit" class="btn btn-primary">Submit</button>
      <button type="Return" class="btn btn-primary">Return</button>
     </form>

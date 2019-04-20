@@ -63,7 +63,7 @@
                     <AnonymousTemplate>
                         <ul class="navbar-nav navbar-right ">
                             <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/Register">Register</a></li>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/Login">Log-in</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/login2">Log-in</a></li>
                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/Notification">Notification</a></li>
                         </ul>
                     </AnonymousTemplate>
