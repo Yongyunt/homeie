@@ -8,13 +8,11 @@ using System.Web;
 /// </summary>
 public class calculate
 {
-    public calculate()
+    public string name;
+    public string result(int x, int y)
     {
+            return string.Format("{0} : {1}", name, (x * y).ToString());
     }
-        public string name;
-
-    //
-    // TODO: Add constructor logic here
-    //
-        
+    
+             
 }
