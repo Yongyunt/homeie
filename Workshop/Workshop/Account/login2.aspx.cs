@@ -10,37 +10,38 @@ using System.Web.UI.WebControls;
 
 public partial class login2 : System.Web.UI.Page
 {
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)
 
     {
+
+        string u = txtUser.Text;
+        string p = txtPass.Text;
+        login(u, p);
+        if (Session["User"] != null)
+        {
+            Response.RedirectPermanent("default.aspx");
+        }
         
-            string u = txtUser.Text;
-            string p = txtPass.Text;
-            login(u, p);
-            if (Session["User"] != null )
+
+
+        string ua = txtUser.Text;
+        string pa = txtPass.Text;
+        Adminlogin(ua, pa);
+        if (Session["Admin"] != null)
         {
-            Response.RedirectPermanent("/Account/login2.aspx");
-        } 
-          
-            
-            string ua = txtUser.Text;
-            string pa = txtPass.Text;
-            Adminlogin(ua, pa);
-            if (Session["User"] != null)
-        {
-            Response.RedirectPermanent("/Account/login2.aspx");
+            Response.RedirectPermanent("default.aspx");
         }
 
 
 
     }
-    protected void login(string u,string p)
+    protected void login(string u, string p)
     {
         string strConn = WebConfigurationManager.ConnectionStrings["SuckreedConnectionString3"].ConnectionString;
         using (SqlConnection Objconn = new SqlConnection(strConn))
@@ -88,8 +89,7 @@ public partial class login2 : System.Web.UI.Page
 
             }
             Objconn.Close();
-         
+
         }
     }
 }
-    

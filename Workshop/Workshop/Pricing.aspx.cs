@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,21 +14,25 @@ public partial class Pricing : System.Web.UI.Page
 
     }
 
-    // protected void Button1_Click(object sender, EventArgs e)
-    // {
-    // calculate ObjC = new calculate();
-    // ObjC.name = "ผลบวก";
-    //int N1 = Convert.ToInt32(TextBox1.Text);
-    //int N2 = Convert.ToInt32(TextBox2.Text);
-    //LabelResult.Text = ObjC.SUM(N1, N2).ToString();
-    // }
+  
 
     protected void Button1_Click1(object sender, EventArgs e)
     {
-        calculate ObjC = new calculate();
+        this.calculator();
+    }
+    protected void calculator()
+    {
+        long sumcal = 0;
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            TextBox txtbox = (TextBox)row.FindControl("txtcal");
+            long number = long.Parse(txtbox.Text);
+            long price = long.Parse(row.Cells[1].Text);
+            sumcal += number * price;
+        }
+        GridViewRow gvrow = GridView1.Rows[1];
 
+        Label1.Text = sumcal.ToString();
+        Response.RedirectPermanent("Order.aspx");
     }
 }
-
-
-   

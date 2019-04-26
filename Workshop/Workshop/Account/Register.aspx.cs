@@ -19,10 +19,11 @@ public partial class Register : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-
+        Registers();
+        Response.RedirectPermanent("/Account/login2.aspx");
     }
     
-    protected void Registers(string u, string p)
+    protected void Registers()
     {
         string strConn = WebConfigurationManager.ConnectionStrings["SuckreedConnectionString3"].ConnectionString;
         using (SqlConnection Objconn = new SqlConnection(strConn))
@@ -32,18 +33,23 @@ public partial class Register : System.Web.UI.Page
             {
                 ObjCM.Connection = Objconn;
                 ObjCM.CommandType = CommandType.StoredProcedure;
-                ObjCM.CommandText = "sqlRegister";
-                //ObjCM.Parameters.AddWithValue("@C_Firstname ", cf);
-                //ObjCM.Parameters.AddWithValue("@C_Lastname", cl);
+                if (DropDownList1.SelectedItem.Text == "ลูกค้า")
+                {
+                    ObjCM.CommandText = "sqlRegister";
+                    ObjCM.Parameters.AddWithValue("@Address", txtAddress.Text);
+                }
+                else
+                {
+                    ObjCM.CommandText = "sqlRegisterAdmin";
+                }
+                ObjCM.Parameters.AddWithValue("@Firstname ", txtName.Text);
+                ObjCM.Parameters.AddWithValue("@Lastname", txtLastname.Text);
+                ObjCM.Parameters.AddWithValue("@Username", txtUserid.Text);
+                ObjCM.Parameters.AddWithValue("@Password", txtPassword.Text);
+                ObjCM.Parameters.AddWithValue("@Phone", txtPhone.Text);
 
                 SqlDataReader ObjDR = ObjCM.ExecuteReader();
-                ObjDR.Read();
-                if (ObjDR.HasRows)
-                {
-                    Session["User"] = ObjDR["Username"].ToString();
-                }
-                ObjDR.Close();
-
+              
             }
             Objconn.Close();
         }

@@ -10,27 +10,28 @@
      </div>
      <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-     </div>
-     <div class="form-group">
-        <label for="exampleInputEmail1">Confirm Password</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Confirm Password">
+         <br />
+         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
      </div>
      <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+         <br />
+         <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
      </div>
      <div class="form-group">
         <label for="exampleInputEmail1">Last name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Lastname">
+         <br />
+         <asp:TextBox ID="txtLastname" runat="server" CssClass="form-control"></asp:TextBox>
      </div>   
      <div class="form-group">
         <label for="exampleInputEmail1">Address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+         <br />
+         <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control"></asp:TextBox>
      </div>
      <div class="form-group">
         <label for="exampleInputEmail1">Phone number</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone number">
+         <br />
+         <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
      </div>
         <div>
               <asp:DropDownList ID="DropDownList1" runat="server">
@@ -38,9 +39,11 @@
                         <asp:ListItem>แม่ค้า</asp:ListItem>
                      
          </asp:DropDownList>
+            
         </div>
-        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" OnClick="Button1_Click"  />
-        <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary"  />
+        <br />
+        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" OnClick="Button1_Click" Text="Submit"  />
+        <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary" Text="Return"  />
         <br />
 
     </form>
