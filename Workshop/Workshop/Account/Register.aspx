@@ -4,8 +4,9 @@
  <h1>Register</h1>
     <form>
      <div class="form-group">
-        <label for="exampleInputEmail1">UserID</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter UserID">
+        <label for="exampleInputEmail1">UserID</label>&nbsp;
+         <br />
+         <asp:TextBox ID="txtUserid" runat="server" CssClass="form-control" Width="332px"></asp:TextBox>
      </div>
      <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
@@ -38,10 +39,10 @@
                      
          </asp:DropDownList>
         </div>
+        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" OnClick="Button1_Click"  />
+        <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary"  />
         <br />
 
-     <button type="Submit" class="btn btn-primary">Submit</button>
-     <button type="Return" class="btn btn-primary">Return</button>
     </form>
     
 

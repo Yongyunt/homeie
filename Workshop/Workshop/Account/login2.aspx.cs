@@ -19,14 +19,25 @@ public partial class login2 : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
 
     {
-        string u = txtUser.Text;
-        string p = txtPass.Text;
-        login(u, p);
-        Response.RedirectPermanent("default.aspx");
-        string ua = txtUser.Text;
-        string pa = txtPass.Text;
-        login(ua, pa);
-        Response.RedirectPermanent("default.aspx");
+        
+            string u = txtUser.Text;
+            string p = txtPass.Text;
+            login(u, p);
+            if (Session["User"] != null )
+        {
+            Response.RedirectPermanent("/Account/login2.aspx");
+        } 
+          
+            
+            string ua = txtUser.Text;
+            string pa = txtPass.Text;
+            Adminlogin(ua, pa);
+            if (Session["User"] != null)
+        {
+            Response.RedirectPermanent("/Account/login2.aspx");
+        }
+
+
 
     }
     protected void login(string u,string p)
@@ -43,7 +54,12 @@ public partial class login2 : System.Web.UI.Page
                 ObjCM.Parameters.AddWithValue("@Username", u);
                 ObjCM.Parameters.AddWithValue("@Password", p);
                 SqlDataReader ObjDR = ObjCM.ExecuteReader();
-
+                ObjDR.Read();
+                if (ObjDR.HasRows)
+                {
+                    Session["User"] = ObjDR["Username"].ToString();
+                }
+                ObjDR.Close();
 
             }
             Objconn.Close();
@@ -63,6 +79,11 @@ public partial class login2 : System.Web.UI.Page
                 ObjCM.Parameters.AddWithValue("@Username", ua);
                 ObjCM.Parameters.AddWithValue("@Password", pa);
                 SqlDataReader ObjDR = ObjCM.ExecuteReader();
+                ObjDR.Read();
+                if (ObjDR.HasRows)
+                {
+                    Session["Admin"] = ObjDR["Username"].ToString();
+                }
 
 
             }
