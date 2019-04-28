@@ -33,6 +33,11 @@ public partial class Pricing : System.Web.UI.Page
         GridViewRow gvrow = GridView1.Rows[1];
 
         Label1.Text = sumcal.ToString();
+       // Response.RedirectPermanent("Pricing.aspx?S_ID=1");
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
         Response.RedirectPermanent("Order.aspx");
     }
 }

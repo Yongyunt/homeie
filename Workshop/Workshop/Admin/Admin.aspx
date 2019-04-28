@@ -8,6 +8,8 @@
             <asp:BoundField DataField="O_Status" HeaderText="O_Status" SortExpression="O_Status" />
         </Columns>
     </asp:GridView>
+    <asp:Button ID="Button1" runat="server" CssClass="alert-link" ForeColor="Black" OnClick="Button1_Click" Text="Edit" />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SuckreedConnectionString %>" SelectCommand="SELECT [O_Date], [O_Picture], [O_Status] FROM [Order]"></asp:SqlDataSource>
+    <asp:Button ID="Button2" runat="server" CssClass="alert-link" Text="Back" />
 </asp:Content>
 
