@@ -9,6 +9,8 @@ using System.Web.UI.WebControls;
 
 public partial class Pricing : System.Web.UI.Page
 {
+    List<Class1> Class1s = new List<Class1>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -33,11 +35,39 @@ public partial class Pricing : System.Web.UI.Page
         GridViewRow gvrow = GridView1.Rows[1];
 
         Label1.Text = sumcal.ToString();
-       // Response.RedirectPermanent("Pricing.aspx?S_ID=1");
+       
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
+        Lc();
         Response.RedirectPermanent("Order.aspx");
     }
+    private void Lc()
+    {
+
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            TextBox txtbox = (TextBox)row.FindControl("txtcal");
+            HiddenField P_ID = (HiddenField)row.FindControl("HFID");
+            int number = int.Parse(txtbox.Text);
+            int P_ID1 = int.Parse(P_ID.Value);
+            int QueryString = int.Parse(Request.QueryString["S_ID"]);
+            int price = int.Parse(row.Cells[1].Text);
+            string name = row.Cells[0].Text;
+
+            if (number > 0 )
+            {
+                Class1s.Add(new Class1(P_ID1, QueryString, number, name, price));
+            }
+
+        }
+
+
+       
+        Session["Order"] = Class1s;
+    }
+
+
+    
 }

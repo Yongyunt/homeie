@@ -12,7 +12,9 @@
 
             <asp:TemplateField HeaderText="จำนวน">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtcal" runat="server" Text="0" TextMode="Number"></asp:TextBox>
+                    <asp:TextBox ID="txtcal" runat="server" Text="0" TextMode="Number" ></asp:TextBox>
+                      <asp:HiddenField ID="HFID" runat="server" 
+            Value='<%# Eval("P_ID") %>' />
                     <br />
                 </ItemTemplate>
             </asp:TemplateField>
@@ -37,8 +39,11 @@ WHERE        (MId.S_ID = @S_ID)">
     </div>
 
     <br />
-    ยอดรวม
     <br />
+    <div class="text-right">
+    ยอดรวม
+        <br />
     <asp:Label ID="Label1" runat="server"></asp:Label>
+    </div>
 </asp:Content>
 

@@ -1,15 +1,46 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="Order" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="Order" EnableEventValidation="false" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <h1>
-        Order
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+    <h1>Order
     </h1>
-    
-    
-   
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:SuckreedConnectionString %>" DeleteCommand="DELETE FROM Product WHERE (P_ID = @P_ID)" SelectCommand="SELECT [P_ID], [P_Type], [P_Name] FROM [Product]"></asp:SqlDataSource>
-   
-    <asp:Label ID="Label1" runat="server"></asp:Label>
-   
+    <br />
+    <asp:Label ID="Label1" runat="server" BackColor="White" BorderColor="Red" ForeColor="Red" Text="โปรดเลือกวันที่"></asp:Label>
+
+
+
+    <br />
+
+    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+    <br />
+    <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" OnRowDeleting="GridView1_RowDeleting">
+        <Columns>
+            <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
+            <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
+            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:Button ID="Button1" runat="server"  CommandName="Delete" CommandArgument='<%# Eval("P_ID") %>' CssClass="btn btn-danger" Text="Delete" />
+                    <asp:HiddenField ID="HFID" runat="server" 
+            Value='<%# Eval("P_ID") %>' />
+                    <br />
+                </ItemTemplate>
+            </asp:TemplateField>
+
+        </Columns>
+    </asp:GridView>
+
+    <br />
+    <div class ="text-right">
+        <asp:Button ID="Button3" runat="server" CssClass="btn btn-dark" OnClick="Button3_Click" Text="คำนวณ" />
+        
+     <asp:Button ID="Button2" runat="server" Text="Submit" CssClass="btn btn-dark" />
+       
+        <br /> 
+    </div>
+     <div class ="text-right">
+      <asp:Label ID="Label2" runat="server"></asp:Label> 
+    </div>
+
 </asp:Content>
 
