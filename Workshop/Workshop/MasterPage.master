@@ -52,7 +52,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a runat="server" class="nav-link" href="~/Service">Service</a>
+                        <a runat="server" class="nav-link" href="~/ServiceV2.aspx?S_ID=1">Service</a>
                     </li>
                     <li class="nav-item">
                         <a runat="server" class="nav-link" href="~/Order">Order</a>

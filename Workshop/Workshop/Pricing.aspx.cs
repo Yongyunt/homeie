@@ -65,7 +65,7 @@ public partial class Pricing : System.Web.UI.Page
 
 
        
-        Session["Order"] = Class1s;
+        Session["Order_Suckmydick"] = Class1s;
     }
 
 

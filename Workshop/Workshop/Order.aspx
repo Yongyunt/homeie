@@ -12,6 +12,7 @@
     <br />
 
     <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+    <asp:Label ID="Label3" runat="server" Text="ซัก"></asp:Label>
     <br />
     <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" OnRowDeleting="GridView1_RowDeleting">
         <Columns>
@@ -30,11 +31,48 @@
         </Columns>
     </asp:GridView>
 
+    <asp:Label ID="Label4" runat="server" Text="รีด"></asp:Label>
+    <asp:GridView ID="GridView2" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
+        <Columns>
+            <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
+            <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
+            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
+             <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:Button ID="Button1" runat="server"  CommandName="Delete" CommandArgument='<%# Eval("P_ID") %>' CssClass="btn btn-danger" Text="Delete" />
+                    <asp:HiddenField ID="HFID" runat="server" 
+            Value='<%# Eval("P_ID") %>' />
+                    <br />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+   
+    <asp:Label ID="Label5" runat="server" Text="ซัก&amp;รีด"></asp:Label>
     <br />
+    <asp:GridView ID="GridView3" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
+        <Columns>
+             <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
+            <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
+            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
+             <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:Button ID="Button1" runat="server"  CommandName="Delete" CommandArgument='<%# Eval("P_ID") %>' CssClass="btn btn-danger" Text="Delete" />
+                    <asp:HiddenField ID="HFID" runat="server" 
+            Value='<%# Eval("P_ID") %>' />
+                    <br />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+
+    <br />
+
     <div class ="text-right">
-        <asp:Button ID="Button3" runat="server" CssClass="btn btn-dark" OnClick="Button3_Click" Text="คำนวณ" />
         
-     <asp:Button ID="Button2" runat="server" Text="Submit" CssClass="btn btn-dark" />
+
+        
+     <asp:Button ID="Button2" runat="server" Text="Submit" CssClass="btn btn-dark"  />
        
         <br /> 
     </div>
