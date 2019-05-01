@@ -13,7 +13,7 @@ public partial class login2 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session.RemoveAll();
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -22,10 +22,23 @@ public partial class login2 : System.Web.UI.Page
 
         string u = txtUser.Text;
         string p = txtPass.Text;
-        login(u, p);
+        if (u.Length > 0 || p.Length > 0)
+        {
+            login(u, p);
+        }
+        else
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "swal('Good job!', 'Please!', 'error');", true);
+
+        }
+
         if (Session["User"] != null)
         {
-            Response.RedirectPermanent("default.aspx");
+            Response.Redirect("default.aspx");
+        }
+        else
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "swal('Good job!', 'Please!', 'error');", true);
         }
         
 
@@ -35,7 +48,11 @@ public partial class login2 : System.Web.UI.Page
         Adminlogin(ua, pa);
         if (Session["Admin"] != null)
         {
-            Response.RedirectPermanent("Admin.aspx");
+            Response.Redirect("~/Admin/A.aspx");
+        }
+        else
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "swal('Good job!', 'Please!', 'error');", true);
         }
 
 
@@ -59,6 +76,7 @@ public partial class login2 : System.Web.UI.Page
                 if (ObjDR.HasRows)
                 {
                     Session["User"] = ObjDR["Username"].ToString();
+                    Session["UserID"] = ObjDR["C_ID"].ToString();
                 }
                 ObjDR.Close();
 

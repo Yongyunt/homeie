@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
- <h1>Register</h1>
+    <h1>Register</h1>
     <form>
      <div class="form-group">
         <label for="exampleInputEmail1">UserID</label>&nbsp;
@@ -31,7 +31,7 @@
      <div class="form-group">
         <label for="exampleInputEmail1">Phone number</label>
          <br />
-         <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
+         <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
      </div>
         <div>
               <asp:DropDownList ID="DropDownList1" runat="server">

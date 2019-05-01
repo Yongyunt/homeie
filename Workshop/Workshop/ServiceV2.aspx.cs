@@ -47,10 +47,11 @@ public partial class Service_reed : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Lc();
-        //if (Session["Order_Suckmydick"] != null)
+        //if (Session["Order_Suckmydick"] == null)
         //{
-           // Response.Redirect("ServiceV2.aspx?S_ID=1");
+         //   Response.Redirect("ServiceV2.aspx?S_ID=1");
         //}
+      
         if (Request.QueryString["S_ID"]=="1")
         {
         Response.Redirect("ServiceV2.aspx?S_ID=2");

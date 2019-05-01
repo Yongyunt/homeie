@@ -10,6 +10,10 @@ using System.Web.UI.WebControls;
 
 public partial class Order : System.Web.UI.Page
 {
+    string O;
+   
+
+
     List<Class1> order_list;
     List<Class1> order_list1;
     List<Class1> order_list2;
@@ -96,6 +100,7 @@ public partial class Order : System.Web.UI.Page
 
     }
 
+
     protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
 
@@ -178,10 +183,12 @@ public partial class Order : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-
+        Orders();
+        bill();
+        Response.Redirect("default.aspx");
     }
 
-    protected void bill()
+    protected void Orders()
     {
         string strConn = WebConfigurationManager.ConnectionStrings["SuckreedConnectionString3"].ConnectionString;
         using (SqlConnection Objconn = new SqlConnection(strConn))
@@ -192,8 +199,10 @@ public partial class Order : System.Web.UI.Page
                 ObjCM.Connection = Objconn;
                 ObjCM.CommandType = CommandType.StoredProcedure;
                
-                    ObjCM.CommandText = "sqlbill";
-                    ObjCM.Parameters.AddWithValue("@O_ID", );
+                ObjCM.CommandText = "sqlOrder";
+                ObjCM.Parameters.AddWithValue("@O_Date", Convert.ToDateTime(TextBox1.Text));
+                ObjCM.Parameters.AddWithValue("@O_Status","รอดำเนินการ");
+                ObjCM.Parameters.AddWithValue("@C_ID",Session["UserID"]);
                 
                
              
@@ -201,7 +210,83 @@ public partial class Order : System.Web.UI.Page
 
             }
             Objconn.Close();
+            Objconn.Open();
+            using (SqlCommand ObjCM = new SqlCommand())
+            {
+                ObjCM.Connection = Objconn;
+
+                ObjCM.CommandText = "SELECT TOP 1 O_ID FROM[Order] ORDER BY O_ID DESC";
+
+                SqlDataReader ObjDR = ObjCM.ExecuteReader();
+                ObjDR.Read();
+                O = ObjDR["O_ID"].ToString();
+                ObjDR.Close();
+            }
+            Objconn.Close();
         }
     }
+    protected void Order_Prtoduct(string p_id,string s_id , long number)
+    {
+        string strConn = WebConfigurationManager.ConnectionStrings["SuckreedConnectionString3"].ConnectionString;
+        using (SqlConnection Objconn = new SqlConnection(strConn))
+        {
+            Objconn.Open();
+            using (SqlCommand ObjCM = new SqlCommand())
+            {
+                ObjCM.Connection = Objconn;
+                ObjCM.CommandType = CommandType.StoredProcedure;
+
+                ObjCM.CommandText = "sqlOrder_Product";
+
+                ObjCM.Parameters.AddWithValue("@O_ID", int.Parse(O));
+
+                ObjCM.Parameters.AddWithValue("@P_ID", int.Parse(p_id));
+
+                ObjCM.Parameters.AddWithValue("@S_ID", int.Parse(s_id));
+
+                ObjCM.Parameters.AddWithValue("@Amount", int.Parse(number.ToString()));
+
+                if (ObjCM.ExecuteNonQuery() != 0)
+                {
+
+                }
+
+            }
+            Objconn.Close();
+            
+
+        }
+    }
+
+    protected void bill()
+    {
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            long number = long.Parse(row.Cells[2].Text);
+            HiddenField p_id_hf = (HiddenField)row.FindControl("HFID");
+            string s_id = "1";
+            string p_id = p_id_hf.Value;
+            Order_Prtoduct(p_id,s_id,number);
+        }
+        foreach (GridViewRow row in GridView2.Rows)
+        {
+            long number = long.Parse(row.Cells[2].Text);
+            HiddenField p_id_hf = (HiddenField)row.FindControl("HFID");
+            string s_id = "2";
+            string p_id = p_id_hf.Value;
+            Order_Prtoduct(p_id, s_id, number);
+        }
+        foreach (GridViewRow row in GridView3.Rows)
+        {
+            long number = long.Parse(row.Cells[2].Text);
+            HiddenField p_id_hf = (HiddenField)row.FindControl("HFID");
+            string s_id = "3";
+            string p_id = p_id_hf.Value;
+            Order_Prtoduct(p_id, s_id, number);
+        }
+
+    }
+        
+
 }
 

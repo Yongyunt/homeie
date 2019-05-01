@@ -10,8 +10,12 @@
 
 
     <br />
+    <asp:TextBox ID="TextBox1" TextMode="Date" runat="server"></asp:TextBox>
 
-    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+
+
+    <br />
+
     <asp:Label ID="Label3" runat="server" Text="ซัก"></asp:Label>
     <br />
     <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" OnRowDeleting="GridView1_RowDeleting">
@@ -19,11 +23,11 @@
             <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
             <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
             <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
+
             <asp:TemplateField ShowHeader="False">
                 <ItemTemplate>
                     <asp:Button ID="Button1" runat="server"  CommandName="Delete" CommandArgument='<%# Eval("P_ID") %>' CssClass="btn btn-danger" Text="Delete" />
-                    <asp:HiddenField ID="HFID" runat="server" 
-            Value='<%# Eval("P_ID") %>' />
+                    <asp:HiddenField ID="HFID" runat="server" Value='<%# Eval("P_ID") %>' />
                     <br />
                 </ItemTemplate>
             </asp:TemplateField>
@@ -72,7 +76,7 @@
         
 
         
-     <asp:Button ID="Button2" runat="server" Text="Submit" CssClass="btn btn-dark"  />
+     <asp:Button ID="Button2" runat="server" Text="Submit" CssClass="btn btn-dark" OnClick="Button2_Click"  />
        
         <br /> 
     </div>

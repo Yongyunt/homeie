@@ -5,7 +5,7 @@
     <div class="text-center">
         <br/>
         &nbsp;<img src="555.jpg" height="500" width="750" class="img-thumbnail">
-        <h1 align = 'center'>Suckreed Luandry Service </h1>
+        <h1>Suckreed Luandry Service </h1>
     </div>
 
     <div class="row">

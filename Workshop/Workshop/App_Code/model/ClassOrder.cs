@@ -16,7 +16,6 @@ public class Class1
     public int Price { get; set; }
     public Class1(int P_id, int S_ID, int Amount, string P_Name, int Price )
     {
-       
         this.P_ID = P_id;
         this.S_ID = S_ID;
         this.Amount = Amount;

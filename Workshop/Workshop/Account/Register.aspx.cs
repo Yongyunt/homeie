@@ -14,14 +14,22 @@ public partial class Register : System.Web.UI.Page
     {
 
     }
-    
+
 
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        if (txtUserid.Text.Length >  0)
+        {
         Registers();
         Response.RedirectPermanent("/Account/login2.aspx");
+        }
+        else 
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "swal('Good job!', 'Pleaseกรอกข้อมูล!', 'error');", true);
+        }
     }
+
     
     protected void Registers()
     {
