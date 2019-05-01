@@ -32,7 +32,7 @@
     </asp:GridView>
 
     <asp:Label ID="Label4" runat="server" Text="รีด"></asp:Label>
-    <asp:GridView ID="GridView2" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
+    <asp:GridView ID="GridView2" runat="server" CssClass="table table-striped" OnRowCommand ="GridView2_RowCommand" AutoGenerateColumns="false" OnRowDeleting ="GridView2_RowDeleting" >
         <Columns>
             <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
             <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
@@ -50,7 +50,7 @@
    
     <asp:Label ID="Label5" runat="server" Text="ซัก&amp;รีด"></asp:Label>
     <br />
-    <asp:GridView ID="GridView3" runat="server" CssClass="table table-striped" AutoGenerateColumns="false">
+    <asp:GridView ID="GridView3" runat="server" CssClass="table table-striped" OnRowCommand ="GridView3_RowCommand" AutoGenerateColumns="false" OnRowDeleting ="GridView3_RowDeleting"  >
         <Columns>
              <asp:BoundField DataField="P_Name" HeaderText="P_Name" SortExpression="P_Name" />
             <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />

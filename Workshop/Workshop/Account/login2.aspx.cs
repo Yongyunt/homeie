@@ -35,7 +35,7 @@ public partial class login2 : System.Web.UI.Page
         Adminlogin(ua, pa);
         if (Session["Admin"] != null)
         {
-            Response.RedirectPermanent("default.aspx");
+            Response.RedirectPermanent("Admin.aspx");
         }
 
 

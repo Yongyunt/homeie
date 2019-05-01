@@ -47,7 +47,10 @@ public partial class Service_reed : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Lc();
-
+        //if (Session["Order_Suckmydick"] != null)
+        //{
+           // Response.Redirect("ServiceV2.aspx?S_ID=1");
+        //}
         if (Request.QueryString["S_ID"]=="1")
         {
         Response.Redirect("ServiceV2.aspx?S_ID=2");
@@ -58,8 +61,10 @@ public partial class Service_reed : System.Web.UI.Page
         }
         else if (Request.QueryString["S_ID"] == "3")
         {
-            Response.Redirect("Order.aspx");
+            Response.Redirect("Order.aspx");   
         }
+        
+        
     }
     private void Lc()
     {
@@ -96,7 +101,7 @@ public partial class Service_reed : System.Web.UI.Page
         }
         else
         {
-            Session["op"] = Class1s;
+           
         }
     }
 }
